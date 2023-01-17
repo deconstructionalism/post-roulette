@@ -78,7 +78,7 @@ the same place they left off.
 
 ##### Cursor Schema
 
-```json
+```js
 {
   "source_name": str, // name of social media platform
   "value": int // last accessed index in posts from social media platform
@@ -94,7 +94,7 @@ the raw data provided by a platform is mapped to this shape via the
 
 ##### Post Schema
 
-```json
+```js
 {
   "source_name": str, // name of social media platform
   "index": int, // index of post in data dump from platform
@@ -108,3 +108,4 @@ the raw data provided by a platform is mapped to this shape via the
 - write tests
 - figure out how to transform Instagram data so that images can be OCR-ed into
   text data (probably out of scope for this app)
+- put up some dummy FB data
