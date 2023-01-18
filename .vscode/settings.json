@@ -7,7 +7,6 @@
       "source.organizeImports": true
     }
   },
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": false,
+  "python.linting.mypyEnabled": true,
   "editor.rulers": [88]
 }
