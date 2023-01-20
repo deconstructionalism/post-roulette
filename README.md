@@ -31,6 +31,12 @@ copy of saved posts.
 2. Follow on screen instructions to jog thru or save/remove posts. Saved posts can
    be found in `./db/db.json`. See [Database](#database) for more details.
 
+## Debugging
+
+In case the app is crashing on load, you can run
+`poetry run roulette <social media config name> --debug` which will print out the
+post at the current index instead of trying to render the app.
+
 ## Architecture
 
 ### Config
@@ -109,3 +115,6 @@ the raw data provided by a platform is mapped to this shape via the
 - figure out how to transform Instagram data so that images can be OCR-ed into
   text data (probably out of scope for this app)
 - put up some dummy FB data
+- FB unicode escape chars for languages such as farsi within post content are
+  mojibaked. We could use logic to map these to the intended unicode characters
+  so they print the intended glyphs

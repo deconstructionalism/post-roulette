@@ -12,5 +12,5 @@ MapRowToPost = Callable[[int, Any], PostData]
 
 class SourceConfig(TypedDict):
     name: str
-    mapper_function: MapRowToPost
+    mapper_function_name: str
     data_file_name: str

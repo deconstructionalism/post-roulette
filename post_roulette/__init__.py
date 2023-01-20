@@ -4,8 +4,9 @@ import argparse
 
 from tinydb import TinyDB
 
+from .app import App
 from .config import source_configs
-from .lib import View, load_and_map_data
+from .lib import load_and_map_data
 from .models import Cursors, Posts
 
 
@@ -25,16 +26,23 @@ def main() -> None:
         help="choose a configuration to run",
     )
 
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="display the indexed post and quit, in case app fails to load post",
+    )
+
     args = parser.parse_args()
     source_config = source_configs[args.config_name]
+    in_debugging_mode = args.debug
 
     db = TinyDB("./db/db.json")
     cursors = Cursors(db)
     posts = Posts(db)
     mapped_posts = load_and_map_data(
-        source_config["data_file_name"], source_config["mapper_function"]
+        source_config["data_file_name"], source_config["mapper_function_name"]
     )
 
-    view = View(source_config["name"], cursors, posts, mapped_posts)
+    app = App(source_config["name"], cursors, posts, mapped_posts, in_debugging_mode)
 
-    view.render()
+    app.render()
